@@ -203,7 +203,24 @@ int LinuxParser::TotalProcesses() {
 }
 
 // TODO: Read and return the number of running processes
-int LinuxParser::RunningProcesses() { return 0; }
+int LinuxParser::RunningProcesses() {
+  string line; // create a string to store the line
+  string key; // create a string to store the key
+  int runningProcesses = 0; // create an int to store the running processes
+  std::ifstream filestream(kProcDirectory + kStatFilename); // /proc/stat
+  if (filestream.is_open()) { // if the file is open
+    while (std::getline(filestream, line)) { // read the file line by line
+      std::istringstream linestream(line); // create a string stream from the line
+      while (linestream >> key) { // read the first word of the line
+        if (key == "procs_running") { // if the first word is procs_running
+          linestream >> runningProcesses; // read the next word and store it in runningProcesses
+          return runningProcesses; // return the runningProcesses
+        }
+      }
+    }
+  }
+  return runningProcesses;
+}
 
 // TODO: Read and return the command associated with a process
 // REMOVE: [[maybe_unused]] once you define the function
