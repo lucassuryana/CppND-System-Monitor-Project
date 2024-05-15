@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "linux_parser.h"
 
@@ -89,7 +90,19 @@ float LinuxParser::MemoryUtilization() {
 }
 
 // TODO: Read and return the system uptime
-long LinuxParser::UpTime() { return 0; }
+long int LinuxParser::UpTime() {
+  string line; // create a string to store the line
+  long int uptime; // create a long int to store the uptime
+  std::ifstream filestream(kProcDirectory + kUptimeFilename); // /proc/uptime
+  if (filestream.is_open()) { // if the file is open
+    std::getline(filestream, line); // read the first line of the file
+    std::istringstream linestream(line); // create a string stream from the line
+    std::string uptimestring, idletimestring; // create two strings to store the uptime and idletime
+    linestream >> uptimestring >> idletimestring; // read the first and second word of the line and store them in uptime and idletime
+    uptime = std::stol(uptimestring);
+  }
+  return uptime; // return the uptime
+}
 
 // TODO: Read and return the number of jiffies for the system
 long LinuxParser::Jiffies() { return 0; }
