@@ -14,17 +14,13 @@ regex
 string
 -
 
-/workspaces/CppND-System-Monitor-Project/src/linux_parser.cpp
-dirent.h
--
-unistd.h
--
-string
--
-vector
--
-iostream
--
+../include/processor.h
+
+/workspaces/CppND-System-Monitor-Project/src/processor.cpp
+processor.h
+/workspaces/CppND-System-Monitor-Project/src/processor.h
 linux_parser.h
 /workspaces/CppND-System-Monitor-Project/src/linux_parser.h
+string
+-
 
