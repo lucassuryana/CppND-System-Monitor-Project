@@ -18,7 +18,7 @@ using std::vector;
 Processor& System::Cpu() { return cpu_; }
 
 // Return a container composed of the system's processes
-vector<Process>& System::Processes() {
+vector<Process>& System::Processes() { //return a vector of processes
   vector<int> pids = LinuxParser::Pids();
   processes_.clear();
   for (int pid : pids) {
