@@ -15,7 +15,7 @@ Process::Process(int pid) : pid_(pid) {} // TODO: Return this process's ID
 
 int Process::Pid() { return pid_;} // Return the process ID
 
-// TODO: Return this process's CPU utilization
+// Return this process's CPU utilization
 float Process::CpuUtilization() const {
     float activeJiffies = LinuxParser::ActiveJiffies(pid_); // Get the active jiffies for the process
     float systemUptime = LinuxParser::UpTime(); // Get the system uptime which is the time since the system started
@@ -25,21 +25,21 @@ float Process::CpuUtilization() const {
     return cpuUsage;  // Return the CPU usage
 }
 
-// TODO: Return the command that generated this process
+// Return the command that generated this process
 string Process::Command() { return LinuxParser::Command(pid_); } // Return the command that generated this process
 
-// TODO: Return this process's memory utilization
+// Return this process's memory utilization
 string Process::Ram() { return LinuxParser::Ram(pid_); } // Return this process's memory utilization
 
-// TODO: Return the user (name) that generated this process
+// Return the user (name) that generated this process
 string Process::User() { return LinuxParser::User(pid_); } // Return the user (name) that generated this process
 
-// TODO: Return the age of this process (in seconds)
+// Return the age of this process (in seconds)
 long int Process::UpTime() { 
-    return LinuxParser::UpTime() - LinuxParser::UpTime(pid_); // Return the age of this process (in seconds)
+    return LinuxParser::UpTime(pid_); // Return the age of this process (in seconds)
 }
 
-// TODO: Overload the "less than" comparison operator for Process objects
+// Overload the "less than" comparison operator for Process objects
 bool Process::operator<(Process const& a) const { 
     return a.CpuUtilization() < CpuUtilization(); // Overload the "less than" comparison operator for Process objects
 }

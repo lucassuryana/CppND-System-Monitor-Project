@@ -2,7 +2,7 @@
 #include "linux_parser.h"
 #include <string>
 
-// TODO: Return the aggregate CPU utilization
+// Return the aggregate CPU utilization
 float Processor::Utilization() {
     // Get the CPU utilization values from LinuxParser
     std::vector<std::string> cpuUtilizationstring = LinuxParser::CpuUtilization(); // [user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice]

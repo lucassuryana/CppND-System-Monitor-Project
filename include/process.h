@@ -9,15 +9,16 @@ It contains relevant attributes as shown below
 class Process {
  public:
   Process(int pid);                        // Constructor for Process class
-  int Pid();                               // TODO: See src/process.cpp
-  std::string User();                      // TODO: See src/process.cpp
-  std::string Command();                   // TODO: See src/process.cpp
-  float CpuUtilization() const;                  // TODO: See src/process.cpp
-  std::string Ram();                       // TODO: See src/process.cpp
-  long int UpTime();                       // TODO: See src/process.cpp
-  bool operator<(Process const& a) const;  // TODO: See src/process.cpp
+  int Pid();                               // Method to return the process ID
+  std::string User();                      // Method to return the user name
+  std::string Command();                   // Method to return the command name
+  float CpuUtilization() const;            // Method to return the CPU utilization
+  std::string Ram();                       // Method to return the RAM usage
+  long int UpTime();                       // Method to return the uptime
+  bool operator<(Process const& a) const;  // Method to overload the "less than" comparison operator for Process objects, ampersand is used to pass the object by reference. A const keyword is used to make sure that the object is not modified.
 
-  // TODO: Declare any necessary private members
+// Declare any necessary private members
+// Private members are needed to store the process ID, user name, command name, CPU utilization, RAM usage, and uptime.
  private:
     int pid_;              // Process ID
     std::string user_;     // User name
